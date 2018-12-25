@@ -2,7 +2,7 @@ CXX = gcc
 
 CXXFLAGS = -O3 -ffast-math
 
-LDFLAGS=
+LDFLAGS= -lm
 
 INCLUDE = -I include
 

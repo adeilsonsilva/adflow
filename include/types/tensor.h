@@ -16,6 +16,8 @@ typedef struct
  *  int     rows        Number of Tensor rows
  *  int     columns     Number of Tensor columns
  *  int     depth       Number of Tensor depth
+ *
+ *  return      A new Vector
  */
 TensorPointer createTensor (unsigned int rows, unsigned int columns, unsigned int depth)
 {
