@@ -141,6 +141,26 @@ Scalar frobeniusNorm (MatrixPointer M)
 }
 
 /**
+ * Computes the Trace Operator for Matrix M
+ *
+ * MatrixPointer    M   The matrix to be computed
+ *
+ * return               A scalar, the Trace operator
+ */
+Scalar trace (MatrixPointer M)
+{
+    Scalar x = 0.0;
+
+    for (int i = 0; i < M->rows; i++) {
+        for (int j = 0; j < M->columns; j++) {
+            x += (i == j) ? M->data[i][j] : 0.0 ;
+        }
+    }
+
+    return x;
+}
+
+/**
  * Prints matrix content to screen
  */
 void printMatrix (MatrixPointer M)

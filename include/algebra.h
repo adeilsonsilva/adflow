@@ -160,6 +160,49 @@ VectorPointer multiplyMatrixByVector (MatrixPointer M, VectorPointer V, bool vec
     return C;
 }
 
+/**
+ * Creates a squared diagonal matrix from Vector P
+ *
+ * Vector           V                Vector to be used
+ *
+ * return           A squared diagonal matrix
+ */
+MatrixPointer createDiagonalMatrix (VectorPointer V)
+{
+    MatrixPointer C;
+
+    C = createMatrix(V->elements, V->elements);
+
+    for (int i = 0; i < C->rows; i++) {
+        for (int j = 0; j < C->columns; j++) {
+            C->data[i][j] = (i == j) ? V->data[i] : 0;
+        }
+    }
+}
+
+/**
+ * Creates a squared diagonal matrix from Vector P
+ *
+ * Matrix           V                Matrix with concatenated eigenvectors
+ * Vector           D                Vector of eigenvalues
+ * Matrix           A                Matrix with concatenated eigenvectors, inverse of V
+ *
+ * return           A matrix
+ */
+MatrixPointer eigendecomposition (MatrixPointer V, VectorPointer D, MatrixPointer A)
+{
+    MatrixPointer diag, V1, result;
+
+    diag = createDiagonalMatrix(D);
+
+    V1 = productMatrix(V, diag);
+
+    result = productMatrix(V1, A);
+
+    return result;
+
+}
+
 void testDataTypes()
 {
     printf("======== TESTING ========\n");
