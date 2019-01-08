@@ -2,6 +2,8 @@
 #include <types/matrix.hpp>
 #include <types/tensor.hpp>
 
+#include <functions.hpp>
+
 int main (int argc, char *argv[])
 {
 
@@ -20,6 +22,21 @@ int main (int argc, char *argv[])
     V[2] = 3;
 
     V.print();
+
+    printf("avg: %f; var: %f; stdDev: %f\n", V.avg(), V.var(), V.stdDev());
+
+    adflow::Matrix COVAR = adflow::Matrix::coVar(V);
+    COVAR.print();
+
+    printf("++ %f\n", adflow::sigmoid(0));
+    printf("++ %f\n", adflow::sigmoid(1));
+    printf("++ %f\n", adflow::sigmoid(-1));
+    printf("++ %f\n", adflow::sigmoid(-3.54));
+    printf("++ %f\n", adflow::sigmoid(3.54));
+    printf("++ %f\n", adflow::sigmoid(354));
+
+    adflow::Vector KL = adflow::sigmoid(V);
+    KL.print();
 
     printf("================\n");
 

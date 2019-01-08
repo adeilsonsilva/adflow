@@ -142,6 +142,50 @@ Scalar Vector::normDotProduct (Vector& V, int theta)
     return this->pNorm(2) * V.pNorm(2) * cos(theta * M_PI / 180);
 }
 
+
+/**
+ * Computes the average value of Vector
+ *
+ * @return  Scalar      The mean value of the Vector
+ */
+Scalar Vector::avg ()
+{
+    Scalar result = 0.0;
+
+    for (int i = 0; i < this->elements; i++) {
+        result += this->at(i);
+    }
+    result /= this->elements;
+
+    return result;
+}
+
+/**
+ * Computes the variance
+ *
+ * @return  Scalar      The variance of the Vector
+ */
+Scalar Vector::var ()
+{
+    Scalar result = 0.0, avg = this->avg();
+
+    for (int i = 0; i < this->elements; i++) {
+        result += pow((this->at(i) - avg), 2);
+    }
+
+    return result;
+}
+
+/**
+ * Computes the standard deviation
+ *
+ * @return  Scalar      The standard deviation of the Vector
+ */
+Scalar Vector::stdDev ()
+{
+    return sqrt(this->var());
+}
+
 /**
  * Prints Vector content to screen
  */

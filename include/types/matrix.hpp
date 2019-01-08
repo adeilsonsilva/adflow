@@ -31,6 +31,8 @@ namespace adflow
 
             Matrix diagonal (Vector &Y);
 
+            static Matrix coVar (Vector &V);
+
             Scalar getRows() const;
             Scalar getColumns() const;
             void print() const;

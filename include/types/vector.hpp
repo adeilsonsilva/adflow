@@ -24,6 +24,9 @@ namespace adflow
             Scalar maxNorm ();
             Scalar normDotProduct (Vector &V, int theta);
 
+            Scalar avg ();
+            Scalar var ();
+            Scalar stdDev ();
             void print() const;
 
         private:
