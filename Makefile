@@ -39,13 +39,16 @@ $(BUILD)/linalg.o: $(SRC)/linalg.cpp
 $(BUILD)/statistics.o: $(SRC)/statistics.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
+$(BUILD)/random.o: $(SRC)/random.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
+
 $(BUILD)/main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
 ###############
 # Executables #
 ###############
-main.out: $(BUILD)/main.o $(BUILD)/types/vector.o $(BUILD)/types/matrix.o $(BUILD)/types/tensor.o $(BUILD)/linalg.o $(BUILD)/statistics.o
+main.out: $(BUILD)/main.o $(BUILD)/types/vector.o $(BUILD)/types/matrix.o $(BUILD)/types/tensor.o $(BUILD)/linalg.o $(BUILD)/statistics.o $(BUILD)/random.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 ##########
