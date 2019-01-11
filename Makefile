@@ -33,17 +33,23 @@ $(BUILD)/types/matrix.o: $(SRC)/types/matrix.cpp
 $(BUILD)/types/tensor.o: $(SRC)/types/tensor.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
+$(BUILD)/linalg.o: $(SRC)/linalg.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
+
+$(BUILD)/statistics.o: $(SRC)/statistics.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
+
 $(BUILD)/main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
 ###############
 # Executables #
 ###############
-main.out: $(BUILD)/main.o $(BUILD)/types/vector.o $(BUILD)/types/matrix.o $(BUILD)/types/tensor.o
+main.out: $(BUILD)/main.o $(BUILD)/types/vector.o $(BUILD)/types/matrix.o $(BUILD)/types/tensor.o $(BUILD)/linalg.o $(BUILD)/statistics.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 ##########
 # Clean #
 ##########
 clean:
-	@rm -f $(BUILD)/*.o *.out
+	@rm -rf $(BUILD)/*

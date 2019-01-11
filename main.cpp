@@ -2,7 +2,8 @@
 #include <types/matrix.hpp>
 #include <types/tensor.hpp>
 
-#include <functions.hpp>
+#include <linalg.hpp>
+#include <statistics.hpp>
 
 int main (int argc, char *argv[])
 {
@@ -25,17 +26,17 @@ int main (int argc, char *argv[])
 
     printf("avg: %f; var: %f; stdDev: %f\n", V.avg(), V.var(), V.stdDev());
 
-    adflow::Matrix COVAR = adflow::Matrix::coVar(V);
+    adflow::Matrix COVAR = adflow::linalg::coVar(V);
     COVAR.print();
 
-    printf("++ %f\n", adflow::sigmoid(0));
-    printf("++ %f\n", adflow::sigmoid(1));
-    printf("++ %f\n", adflow::sigmoid(-1));
-    printf("++ %f\n", adflow::sigmoid(-3.54));
-    printf("++ %f\n", adflow::sigmoid(3.54));
-    printf("++ %f\n", adflow::sigmoid(354));
+    printf("++ %f\n", adflow::statistics::sigmoid(0));
+    printf("++ %f\n", adflow::statistics::sigmoid(1));
+    printf("++ %f\n", adflow::statistics::sigmoid(-1));
+    printf("++ %f\n", adflow::statistics::sigmoid(-3.54));
+    printf("++ %f\n", adflow::statistics::sigmoid(3.54));
+    printf("++ %f\n", adflow::statistics::sigmoid(354));
 
-    adflow::Vector KL = adflow::sigmoid(V);
+    adflow::Vector KL = adflow::statistics::sigmoid(V);
     KL.print();
 
     printf("================\n");

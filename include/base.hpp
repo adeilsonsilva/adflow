@@ -8,7 +8,8 @@
 #include <sstream>
 #include <string>
 
-namespace adflow {
+namespace adflow
+{
     /**
      * "A scalar is just a single number [...]" (Goodfellow, 2016)
      */
